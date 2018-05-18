@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title></title>
+    <style>
+      .main {
+        width: 600px;
+        background-image: url(./static/images/face.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      .hair {
+        width: 100%;
+        mix-blend-mode: overlay;
+      }
+      .controller {
+        width: 100%;
+      }
+      .controller input {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='main'>
+      <img src='./static/images/hair.png' class='hair' />
+      <div class='controller'>
+        <input type='range' min='0' max='360' id='hueRotateContoller' value='0' />
+        <input type='range' min='0' max='15' step='0.05' id='brightnessController' value='4' />
+      </div>
+    </div>
+    <svg>
+      <filter id='filter'>
+        <feColorMatrix type="hueRotate" values="0" />
+      </filter>
+    </svg>
+    <script src='./static/js/main.js'></script>
+  </body>
+</html>
