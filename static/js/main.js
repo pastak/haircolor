@@ -3,6 +3,11 @@
   if (location.protocol === 'http:' && location.hostname !== 'localhost') {
     return location.protocol = 'https:'
   }
+  if (/Safari/.test(navigator.userAgent)) {
+    if (confirm('このウェブサイトはSafariでは動作しません。Android Chromeまたはデスクトップ版のFirefoxやChromeなどでの閲覧をお願いします。ところで、この問題を解決するためのPRを作成してみませんか？')){
+      location.href = 'https://github.com/pastak/haircolor'
+    }
+  }
 
   const hairImage = document.querySelector('#hairImage')
   const faceImage = document.querySelector('#faceImage')
@@ -29,9 +34,12 @@
     `
     updateCanvas(filter)
   }
-  hueRotateContoller && hueRotateContoller.addEventListener('input', updateFilter)
-  brightnessController && brightnessController.addEventListener('input', updateFilter)
-  saturateController && saturateController.addEventListener('input', updateFilter)
+  const eventNames = ['input', 'change']
+  eventNames.forEach((eventName) => {
+    hueRotateContoller && hueRotateContoller.addEventListener(eventName, updateFilter)
+    brightnessController && brightnessController.addEventListener(eventName, updateFilter)
+    saturateController && saturateController.addEventListener(eventName, updateFilter)
+  })
 
   const saveImageButton = document.querySelector('#saveImageButton')
 
