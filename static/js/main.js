@@ -3,8 +3,8 @@
   if (location.protocol === 'http:' && location.hostname !== 'localhost') {
     return location.protocol = 'https:'
   }
-  if (/Safari/.test(navigator.userAgent)) {
-    if (confirm('このウェブサイトはSafariでは動作しません。Android Chromeまたはデスクトップ版のFirefoxやChromeなどでの閲覧をお願いします。ところで、この問題を解決するためのPRを作成してみませんか？')){
+  if (/AppleWebKit/.test(navigator.userAgent)) {
+    if (confirm('このウェブサイトはお使いの環境では動作しません。Android Chromeまたはデスクトップ版のFirefoxやChromeなどでの閲覧をお願いします。ところで、この問題を解決するためのPRを作成してみませんか？')){
       location.href = 'https://github.com/pastak/haircolor'
     }
   }
