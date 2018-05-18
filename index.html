@@ -14,16 +14,16 @@
       }
       .main {
         margin: auto;
-        height: calc(100vh - 200px);
         max-width: fit-content;
-        background-image: url(./static/images/face.jpg);
-        background-size: contain;
-        background-repeat: no-repeat;
+        height: calc(100vh - 200px);
       }
-      .hair {
+      .hidden-image {
+        display: none;
+      }
+      #resultCanvas {
         max-width: 100%;
         max-height: 100%;
-        mix-blend-mode: overlay;
+        display: block;
       }
       .controller {
         width: 100%;
@@ -43,7 +43,9 @@
   <body>
     <h1>pastakヘアカラー検討センター</h1>
     <div class='main'>
-      <img src='./static/images/hair.png' class='hair' />
+      <img src='./static/images/hair.png' class='hidden-image' id='hairImage' />
+      <img src='./static/images/face.jpg' class='hidden-image' id='faceImage' />
+      <canvas width='1080' height='720' id='resultCanvas'></canvas>
       <div class='controller'>
         <label>
           色相
@@ -51,19 +53,12 @@
         </label>
         <label>
           明るさ
-          <input type='range' min='0' max='15' step='0.05' id='brightnessController' value='4' />
+          <input type='range' min='0' max='8' step='0.025' id='brightnessController' value='4' />
         </label>
       </div>
-      <!--
       <button id='saveImageButton'>この画像を保存する</button><br />
-      -->
       <button id='tweetButton'>このヘアカラーをツイートする</button>
     </div>
-    <svg>
-      <filter id='filter'>
-        <feColorMatrix type="hueRotate" values="0" />
-      </filter>
-    </svg>
     <script src='./static/js/main.js'></script>
   </body>
 </html>
