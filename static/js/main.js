@@ -1,5 +1,8 @@
 'use strict';
 (() => {
+  if (location.protocol === 'http:' && location.hostname !== 'localhost') {
+    return location.protocol = 'https:';
+  }
   const hairImageElement = document.querySelector('.hair');
   const filterElement = document.querySelector('#filter > feColorMatrix[type=\'hueRotate\']')
   const hueRotateContoller = document.querySelector('#hueRotateContoller');
