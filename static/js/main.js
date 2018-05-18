@@ -20,12 +20,18 @@
 
   const hueRotateContoller = document.querySelector('#hueRotateContoller')
   const brightnessController = document.querySelector('#brightnessController')
+  const saturateController = document.querySelector('#saturateController')
   const updateFilter = () => {
-    const filter = `hue-rotate(${hueRotateContoller.value}deg) brightness(${brightnessController.value})`
+    const filter = `
+      hue-rotate(${hueRotateContoller.value}deg)
+      brightness(${brightnessController.value})
+      saturate(${saturateController.value})
+    `
     updateCanvas(filter)
   }
   hueRotateContoller && hueRotateContoller.addEventListener('input', updateFilter)
   brightnessController && brightnessController.addEventListener('input', updateFilter)
+  saturateController && saturateController.addEventListener('input', updateFilter)
 
   const saveImageButton = document.querySelector('#saveImageButton')
 
@@ -45,11 +51,11 @@
 
 
   const tweetButton = document.querySelector('#tweetButton')
-  if (tweetButton && hueRotateContoller && brightnessController) {
+  if (tweetButton && hueRotateContoller && brightnessController && saturateController) {
     tweetButton.addEventListener('click', (event) => {
       event.preventDefault()
       const message = '私のオススメpastakヘアカラーはこちら！皆さんもオススメのヘアカラーをシェアしませんか？'
-      const thisUrl = `https://haircolor.pastak.net/?hue=${hueRotateContoller.value}&brightness=${brightnessController.value}`
+      const thisUrl = `https://haircolor.pastak.net/?hue=${hueRotateContoller.value}&brightness=${brightnessController.value}&saturate=${saturateController.value}`
       const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(thisUrl)}&hashtags=pastak_haircolor`
       open(intentUrl)
     })
@@ -68,6 +74,10 @@
     }
     if (brightnessController && searchQueries['brightness'] !== undefined) {
       brightnessController.value = searchQueries['brightness']
+      updateFilter()
+    }
+    if (saturateController && searchQueries['saturate'] !== undefined) {
+      saturateController.value = searchQueries['saturate']
       updateFilter()
     }
   }
