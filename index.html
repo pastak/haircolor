@@ -63,6 +63,13 @@
       </div>
       <button id='tweetButton'>このヘアカラーをツイートする</button>
     </div>
-    <script src='./static/js/main.js'></script>
+    <script src='./static/js/main.js' type='module'></script>
+    <script type='nomodule'>
+      (() => {
+        if (confirm('このウェブサイトはお使いの環境では動作しません。Android Chromeまたはデスクトップ版のFirefoxやChromeなどでの閲覧をお願いします。ところで、この問題を解決するためのPRを作成してみませんか？')){
+          location.href = 'https://github.com/pastak/haircolor'
+        }
+      })();
+    </script>
   </body>
 </html>
