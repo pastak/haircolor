@@ -47,6 +47,7 @@
     <h1>pastakヘアカラー検討センター</h1>
     <div class='main'>
       <img src='./static/images/hair.png' class='hidden-image' id='hairImage' />
+      <img src='./static/images/hair-mesh.png' class='hidden-image' id='meshImage' />
       <img src='./static/images/face.jpg' class='hidden-image' id='faceImage' />
       <canvas width='1080' height='720' id='resultCanvas'></canvas>
       <div class='controller'>
@@ -59,6 +60,10 @@
           <input type='range' min='0' max='8' step='0.025' id='brightnessController' value='2' />
           彩度
           <input type='range' min='0' max='4' step='0.01' id='saturateController' value='1' />
+        </label>
+        <label>
+          <input type='checkbox' style='width: auto;' id='isMeshCheckbox' />
+          メッシュにする
         </label>
       </div>
       <button id='tweetButton'>このヘアカラーをツイートする</button>
